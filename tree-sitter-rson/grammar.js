@@ -20,6 +20,8 @@ module.exports = grammar({
       $.struct,
       $.map,
       $.array,
+      $.tuple,
+      $.tuple_struct,
       $._literal
     ),
     identifier: $ => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
@@ -28,6 +30,9 @@ module.exports = grammar({
     field: $ => seq($.identifier, ':', $._expression),
     map: $ => seq('{', sepBy(',', $.map_field), optional(','), '}'),
     map_field: $ => seq($._expression, ':', $._expression),
+    tuple_struct: $ => seq($.identifier, $.tuple),
+    tuple: $ => seq('(', sepBy(',', $._expression), optional(','), ')'),
+
     string: $ => seq('"', /[^"]*/, '"'),
     char: $ => seq('\'', /[^\']/, '\''),
     _comment: $ => token(seq('//', /.*/)),

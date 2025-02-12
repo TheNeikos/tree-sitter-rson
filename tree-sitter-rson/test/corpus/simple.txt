@@ -9,8 +9,38 @@ SimpleName {
 ---
 
 (source_file
- (struct
-  (identifier)
-  (field
-   (identifier)
-   (string))))
+  (struct
+    (identifier)
+    (field
+      (identifier)
+      (string))))
+
+===========
+Tuple struct
+===========
+
+FooBar(123, 0x123, "Hi!")
+
+----
+
+(source_file
+  (tuple_struct
+    (identifier)
+    (tuple
+      (integer)
+      (integer)
+      (string))))
+
+===========
+Tuple
+===========
+
+(123, 0x123, "Hi!")
+
+----
+
+(source_file
+  (tuple
+    (integer)
+    (integer)
+    (string)))
