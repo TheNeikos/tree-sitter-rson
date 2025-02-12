@@ -1,4 +1,7 @@
-(struct (identifier)) @property
+(enum_variant) @constant
+(struct (identifier)) @constant
+(struct (field (enum_variant (identifier)) @property))
+
 
 (string) @string
 (boolean) @boolean
