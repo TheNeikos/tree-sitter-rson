@@ -2,9 +2,6 @@
 Main example
 =====
 
-/*
- * Scene object example
- */
 Scene { // class name is optional
     materials: { // this is a map
         "metal": {
@@ -28,3 +25,38 @@ Scene { // class name is optional
 
 ----
 
+(source_file
+  (struct
+    (identifier)
+    (field
+      (identifier)
+      (map
+        (map_field
+          (string)
+          (struct
+            (field
+              (identifier)
+              (float))))
+        (map_field
+          (string)
+          (struct
+            (field
+              (identifier)
+              (float))))))
+    (field
+      (identifier)
+      (array
+        (struct
+          (field
+            (identifier)
+            (string))
+          (field
+            (identifier)
+            (string)))
+        (struct
+          (field
+            (identifier)
+            (string))
+          (field
+            (identifier)
+            (string)))))))

@@ -12,3 +12,9 @@ name: /// ???
 
 ---
 
+(source_file
+  (struct
+    (identifier)
+    (field
+      (identifier)
+      (string))))
