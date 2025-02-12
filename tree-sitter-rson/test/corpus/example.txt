@@ -29,34 +29,42 @@ Scene { // class name is optional
   (struct
     (identifier)
     (field
-      (identifier)
-      (map
-        (map_field
+      (enum_variant
+        (identifier))
+      (struct
+        (field
           (string)
           (struct
             (field
-              (identifier)
+              (enum_variant
+                (identifier))
               (float))))
-        (map_field
+        (field
           (string)
           (struct
             (field
-              (identifier)
+              (enum_variant
+                (identifier))
               (float))))))
     (field
-      (identifier)
+      (enum_variant
+        (identifier))
       (array
         (struct
           (field
-            (identifier)
+            (enum_variant
+              (identifier))
             (string))
           (field
-            (identifier)
+            (enum_variant
+              (identifier))
             (string)))
         (struct
           (field
-            (identifier)
+            (enum_variant
+              (identifier))
             (string))
           (field
-            (identifier)
+            (enum_variant
+              (identifier))
             (string)))))))

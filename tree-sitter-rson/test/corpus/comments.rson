@@ -16,5 +16,6 @@ name: /// ???
   (struct
     (identifier)
     (field
-      (identifier)
+      (enum_variant
+        (identifier))
       (string))))

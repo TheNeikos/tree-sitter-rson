@@ -15,10 +15,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "map"
-        },
-        {
-          "type": "SYMBOL",
           "name": "array"
         },
         {
@@ -27,11 +23,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "tuple_struct"
+          "name": "_literal"
         },
         {
           "type": "SYMBOL",
-          "name": "_literal"
+          "name": "enum_variant"
         }
       ]
     },
@@ -40,27 +36,36 @@
       "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
     },
     "struct": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "()"
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_fields"
-          }
+          "type": "SYMBOL",
+          "name": "tuple_struct"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_fields"
+            }
+          ]
         }
       ]
     },
@@ -123,81 +128,6 @@
       ]
     },
     "field": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        }
-      ]
-    },
-    "map": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "map_field"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "map_field"
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
-    },
-    "map_field": {
       "type": "SEQ",
       "members": [
         {
@@ -284,6 +214,10 @@
           "value": ")"
         }
       ]
+    },
+    "enum_variant": {
+      "type": "SYMBOL",
+      "name": "identifier"
     },
     "string": {
       "type": "SEQ",
@@ -499,12 +433,7 @@
       "name": "_comment"
     }
   ],
-  "conflicts": [
-    [
-      "map",
-      "_fields"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [],

@@ -12,7 +12,8 @@ SimpleName {
   (struct
     (identifier)
     (field
-      (identifier)
+      (enum_variant
+        (identifier))
       (string))))
 
 ===========
@@ -24,12 +25,13 @@ FooBar(123, 0x123, "Hi!")
 ----
 
 (source_file
-  (tuple_struct
-    (identifier)
-    (tuple
-      (integer)
-      (integer)
-      (string))))
+  (struct
+    (tuple_struct
+      (identifier)
+      (tuple
+        (integer)
+        (integer)
+        (string)))))
 
 ===========
 Tuple
@@ -44,3 +46,39 @@ Tuple
     (integer)
     (integer)
     (string)))
+
+===========
+Empty enums
+===========
+
+{
+    foo: Bar,
+    foo: [Baz, {
+        Baz: "Hello",
+        "Foo": "Bar",
+    }]
+}
+
+----
+
+(source_file
+  (struct
+    (field
+      (enum_variant
+        (identifier))
+      (enum_variant
+        (identifier)))
+    (field
+      (enum_variant
+        (identifier))
+      (array
+        (enum_variant
+          (identifier))
+        (struct
+          (field
+            (enum_variant
+              (identifier))
+            (string))
+          (field
+            (string)
+            (string)))))))

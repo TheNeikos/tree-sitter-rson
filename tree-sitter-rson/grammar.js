@@ -12,26 +12,26 @@ module.exports = grammar({
 
   extras: $ => [/\s/, $._comment],
 
-  conflicts: $ => [[$.map, $._fields]],
-
   rules: {
     source_file: $ => $._expression,
     _expression: $ => choice(
       $.struct,
-      $.map,
       $.array,
       $.tuple,
-      $.tuple_struct,
-      $._literal
+      $._literal,
+      $.enum_variant,
     ),
     identifier: $ => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
-    struct: $ => seq(optional($.identifier), field('body', $._fields)),
+    struct: $ => choice(
+      '()',
+      $.tuple_struct,
+      seq(optional($.identifier), $._fields),
+    ),
     _fields: $ => seq('{', sepBy(',', $.field), optional(','), '}'),
-    field: $ => seq($.identifier, ':', $._expression),
-    map: $ => seq('{', sepBy(',', $.map_field), optional(','), '}'),
-    map_field: $ => seq($._expression, ':', $._expression),
+    field: $ => seq($._expression, ':', $._expression),
     tuple_struct: $ => seq($.identifier, $.tuple),
     tuple: $ => seq('(', sepBy(',', $._expression), optional(','), ')'),
+    enum_variant: $ => $.identifier,
 
     string: $ => seq('"', /[^"]*/, '"'),
     char: $ => seq('\'', /[^\']/, '\''),
