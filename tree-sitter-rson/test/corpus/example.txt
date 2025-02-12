@@ -28,10 +28,12 @@ Scene { // class name is optional
 (source_file
   (struct
     (identifier)
+    (comment)
     (field
       (enum_variant
         (identifier))
       (struct
+        (comment)
         (field
           (string)
           (struct
@@ -50,7 +52,9 @@ Scene { // class name is optional
       (enum_variant
         (identifier))
       (array
+        (comment)
         (struct
+          (comment)
           (field
             (enum_variant
               (identifier))

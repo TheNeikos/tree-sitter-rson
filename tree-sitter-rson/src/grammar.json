@@ -253,7 +253,7 @@
         }
       ]
     },
-    "_comment": {
+    "comment": {
       "type": "TOKEN",
       "content": {
         "type": "SEQ",
@@ -430,7 +430,7 @@
     },
     {
       "type": "SYMBOL",
-      "name": "_comment"
+      "name": "comment"
     }
   ],
   "conflicts": [],

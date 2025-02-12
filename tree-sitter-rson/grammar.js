@@ -10,7 +10,7 @@
 module.exports = grammar({
   name: "rson",
 
-  extras: $ => [/\s/, $._comment],
+  extras: $ => [/\s/, $.comment],
 
   rules: {
     source_file: $ => $._expression,
@@ -35,7 +35,7 @@ module.exports = grammar({
 
     string: $ => seq('"', /[^"]*/, '"'),
     char: $ => seq('\'', /[^\']/, '\''),
-    _comment: $ => token(seq('//', /.*/)),
+    comment: $ => token(seq('//', /.*/)),
     array: $ => seq('[', sepBy(',', $._expression), optional(','), ']'),
     boolean: $ => choice('true', 'false'),
     integer: $ => token(seq(

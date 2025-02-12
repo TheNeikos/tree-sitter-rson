@@ -13,9 +13,15 @@ name: /// ???
 ---
 
 (source_file
+  (comment)
   (struct
     (identifier)
+    (comment)
+    (comment)
     (field
       (enum_variant
         (identifier))
-      (string))))
+      (comment)
+      (string))
+    (comment))
+  (comment))
