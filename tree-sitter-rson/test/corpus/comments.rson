@@ -1,0 +1,14 @@
+=====
+Check single line comment
+=====
+
+// This is a comment
+Foo { // More here!
+// another comment?
+
+name: /// ???
+"Bar" ///
+} ///
+
+---
+

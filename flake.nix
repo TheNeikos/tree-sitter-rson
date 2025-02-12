@@ -16,7 +16,7 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = [
-            pkgs.tree-sitter
+            (pkgs.tree-sitter.override { webUISupport = true; })
             pkgs.nodejs
             pkgs.python3
           ];

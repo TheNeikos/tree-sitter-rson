@@ -11,7 +11,17 @@ module.exports = grammar({
   name: "rson",
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
-  }
+    source_file: $ => $._expression,
+    _expression: $ => choice(
+      $.struct,
+      $.string
+    ),
+    identifier: $ => /[a-zA-Z][a-zA-Z0-9]+/,
+    struct: $ => seq($.identifier, $._fields),
+    _fields: $ => seq('{', repeat($.field), '}'),
+    field: $ => seq($.identifier, ':', $._expression, optional(',')),
+    string: $ => seq('"', /[^"]*/, '"'),
+    comment: $ => token(seq('//', /.*/)),
+  },
+  extra: $ => [/\s/, $.comment]
 });

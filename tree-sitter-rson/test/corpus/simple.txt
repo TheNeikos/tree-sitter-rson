@@ -1,0 +1,16 @@
+==============
+Simple check
+==============
+
+SimpleName {
+    name: "Foobar"
+}
+
+---
+
+(source_file
+ (struct
+  (identifier)
+  (field
+   (identifier)
+   (string))))
